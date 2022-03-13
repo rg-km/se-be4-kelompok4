@@ -5,6 +5,6 @@
 <ul> 
     <li>Muhammad Kevin Rozal </li>
     <li>Shafa Salsabilla Buchori </li>
-    <li>Frilana Luchiana Dewi </li>
+    <li>Firlana Luchiana Dewi </li>
     <li>Fajar Abdul Rozaq </li>
 </ul>
