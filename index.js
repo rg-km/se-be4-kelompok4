@@ -41,10 +41,14 @@ function initSnake(color) {
 }
 let snake1 = initSnake("purple");
 
-let apple = {
+let apples = [{
     color: "red",
     position: initPosition(),
-}
+},
+{
+    color: "blue",
+    position: initPosition(),
+}]
 
 function drawCell(ctx, x, y, color) {
     ctx.fillStyle = color;
@@ -78,7 +82,12 @@ function draw() {
             drawCell(ctx, snake1.body[i].x, snake1.body[i].y, snake1.color);
         }
     
-        drawCell(ctx, apple.position.x, apple.position.y, apple.color);
+        for(let i=0; i<apples.length;i ++) {
+            let apple = apples[i];
+            var apple_img = document.getElementById("apple");
+            ctx.drawImage(apple_img, apple.position.x * CELL_SIZE, apple.position.y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+            // drawCell(ctx, apple.position.x, apple.position.y, apple.color);
+        }
 
         drawScore(snake1);
     }, REDRAW_INTERVAL);
@@ -99,36 +108,39 @@ function teleport(snake) {
     }
 }
 
-function eat(snake, apple) {
-    if (snake.head.x == apple.position.x && snake.head.y == apple.position.y) {
-        apple.position = initPosition();
-        snake.score++;
-        snake.body.push({x: snake.head.x, y: snake.head.y});
+function eat(snake, apples) {
+    for(let i = 0; i < apples.length; i++) {
+        let apple = apples[i];
+        if (snake.head.x == apple.position.x && snake.head.y == apple.position.y) {
+            apple.position = initPosition();
+            snake.score++;
+            snake.body.push({x: snake.head.x, y: snake.head.y});
+        }
     }
 }
 
 function moveLeft(snake) {
     snake.head.x--;
     teleport(snake);
-    eat(snake, apple);
+    eat(snake, apples);
 }
 
 function moveRight(snake) {
     snake.head.x++;
     teleport(snake);
-    eat(snake, apple);
+    eat(snake, apples);
 }
 
 function moveDown(snake) {
     snake.head.y++;
     teleport(snake);
-    eat(snake, apple);
+    eat(snake, apples);
 }
 
 function moveUp(snake) {
     snake.head.y--;
     teleport(snake);
-    eat(snake, apple);
+    eat(snake, apples);
 }
 
 function checkCollision(snakes) {
