@@ -15,3 +15,4 @@
     <li>Level up to level 5 </li>
     <li>Eat apples to level up (2 apples at the time) </li>
     <li>Each level has more obstacles <li>
+<ul>
