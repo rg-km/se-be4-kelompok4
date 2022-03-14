@@ -1,4 +1,4 @@
-name: Deploy Kel 2
+name: GH Pages
 
 # Controls when the workflow will run
 on:
@@ -28,4 +28,4 @@ jobs:
 
         with:
           branch: gh-pages # The branch the action should deploy to.
-          folder: ./snake-game # The folder the action should deploy.
+          folder: snake-game # The folder the action should deploy.
