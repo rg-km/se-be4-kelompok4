@@ -52,8 +52,8 @@ let apples = [{
     position: initPosition(),
 }]
 
-function drawCell(ctx, x, y, head) {
-    var head = document.getElementById("snake_head"); 
+function drawSnake(ctx, x, y, head) {
+    // var head = document.getElementById("snake_head"); 
     ctx.fillStyle = head;
     ctx.drawImage( head, x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
 }
@@ -80,16 +80,15 @@ function draw() {
 
         ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
         
-        drawCell(ctx, snake1.head.x, snake1.head.y, snake1.color);
+        drawSnake(ctx, snake1.head.x, snake1.head.y, document.getElementById("snake_head"));
         for (let i = 1; i < snake1.body.length; i++) {
-            drawCell(ctx, snake1.body[i].x, snake1.body[i].y, snake1.color);
+            drawSnake(ctx, snake1.body[i].x, snake1.body[i].y, document.getElementById("snake_body"));
         }
     
         for(let i=0; i<apples.length;i ++) {
             let apple = apples[i];
             var apple_img = document.getElementById("apple");
             ctx.drawImage(apple_img, apple.position.x * CELL_SIZE, apple.position.y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
-            // drawCell(ctx, apple.position.x, apple.position.y, apple.color);
         }
 
         drawScore(snake1);
