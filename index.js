@@ -11,6 +11,8 @@ const DIRECTION = {
 }
 const MOVE_INTERVAL = 150;
 
+const GAME_OVER_AUDIO = new Audio('assets/game-over.mp3');
+
 function initPosition() {
     return {
         x: Math.floor(Math.random() * WIDTH),
@@ -50,9 +52,10 @@ let apples = [{
     position: initPosition(),
 }]
 
-function drawCell(ctx, x, y, color) {
-    ctx.fillStyle = color;
-    ctx.fillRect(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+function drawCell(ctx, x, y, head) {
+    var head = document.getElementById("snake_head"); 
+    ctx.fillStyle = head;
+    ctx.drawImage( head, x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
 }
 
 function drawScore(snake) {
@@ -156,6 +159,7 @@ function checkCollision(snakes) {
         }
     }
     if (isCollide) {
+        GAME_OVER_AUDIO.play();
         alert("Game over");
         snake1 = initSnake("purple");
     }
