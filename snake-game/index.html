@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .title {
+        width: 500px;
+        display: flex;
+        justify-content: space-between;
+        /* text-align: center; */
+        font-size: 1em;
+        color: #333;
+      }
+      .speed {
+        width: 500px;
+      }
+      .speed h3 {
+        float: right;
+        font-size: 1.5em;
+        margin-bottom: 0px;
+        color: #333;
+      }
+      .nyawa {
+        display: flex;
+        flex-direction: column;
+      }
+      .nyawa1 {
+        margin-bottom: -30px;
+        margin-left: 5px;
+      }
+      h4 {
+        margin-bottom: 5px;
+        font-size: 1.5em;
+        text-align: center;
+        color: #333;
+      }
+    </style>
+    <title>Project Akhir - Snake Game with JS</title>
+  </head>
+
+  <body onload="draw();">
+    <div class="title">
+      <h1>Snake Game</h1>
+      <h1 id="levelNumber">Level: 1</h1>
+    </div>
+
+    <img
+      src="assets/apple.png"
+      width="20"
+      height="20"
+      style="display: none"
+      id="apple"
+      alt=""
+    />
+    <img
+      src="assets/heart.png"
+      style="display: none"
+      width="20"
+      height="20"
+      id="life"
+      alt=""
+    />
+
+    <div class="nyawa">
+      <canvas class="nyawa1" id="nyawa1" width="400" height="20"></canvas>
+
+      <canvas
+        id="snakeBoard"
+        width="500"
+        height="500"
+        style="border: 1px solid #000000"
+      ></canvas>
+    </div>
+
+    <div class="speed">
+      <h3 id="speedNumber">Speed: 150</h3>
+    </div>
+
+    <h4>Score</h4>
+
+    <canvas
+      id="score1Board"
+      width="100"
+      height="100"
+      style="border: 1px solid #000000"
+    ></canvas>
+
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>
