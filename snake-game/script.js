@@ -12,6 +12,9 @@ const DIRECTION = {
 const MOVE_INTERVAL = 150;
 
 const GAME_OVER_AUDIO = new Audio('assets/game-over.mp3');
+const EAT_APPLE_AUDIO = new Audio('assets/eat-apple.wav');
+const EAT_LIFE_AUDIO = new Audio('assets/eat-life.wav');
+const UP_LEVEL_AUDIO = new Audio('assets/up-level.wav');
 
 function initPosition() {
     return {
@@ -165,6 +168,7 @@ function eat(snake, apples) {
             apple.position = initPosition();
             snake.score++;
             snake.body.push({x: snake.head.x, y: snake.head.y});
+            EAT_APPLE_AUDIO.play();
         }
     }
 
@@ -172,8 +176,7 @@ function eat(snake, apples) {
         lifes.position = initPosition();
         snake.life++;
         snake.score++; // biar scorenya nambah sehingga tidak selalu primer
-        // var msk = document.getElementById("getHealth");
-        // msk.play();
+        EAT_LIFE_AUDIO.play();
     }
 }
 
