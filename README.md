@@ -8,3 +8,11 @@
     <li>Firlana Luchiana Dewi </li>
     <li>Fajar Abdul Rozaq </li>
 </ul>
+<h3>Features </h2>
+<ul>
+   <li>3 lives from the start </li>
+    <li>Eat life vials to increase lives </li>
+    <li>Level up to level 5 </li>
+    <li>Eat apples to level up (2 apples at the time) </li>
+    <li>Each level has more obstacles <li>
+<ul>
