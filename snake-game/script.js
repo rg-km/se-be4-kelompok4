@@ -39,9 +39,15 @@ function initSnake(color) {
         ...initHeadAndBody(),
         direction: initDirection(),
         score: 0,
+        life: 3,
     }
 }
 let snake1 = initSnake("purple");
+
+//life snake display canvas
+let lifes = {
+    position: initPosition(),
+}
 
 let apples = [{
     color: "red",
@@ -73,6 +79,40 @@ function drawScore(snake) {
     scoreCtx.fillText(snake.score, 10, scoreCanvas.scrollHeight / 2);
 }
 
+function drawLifeCorner(ctx, snake){
+    let imgLife = document.getElementById("life");
+    var lifePositionX = 0;
+    for (let i = 1; i <= snake.life; i++) {
+        ctx.drawImage(imgLife, lifePositionX * CELL_SIZE, 0 * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+        lifePositionX = lifePositionX + 1;
+    }  
+}
+
+//function isPrime use for prime number
+function isPrime(number) {
+    let divider = 0;
+
+    for (let i = 1; i <= number; i++) {
+        if (number % i == 0) {
+            divider++
+        }
+    }
+    return (divider == 2) ? true : false
+}
+
+//drawLife use to display health in canvas
+function drawLife(ctx, lifes) {
+
+    let img = document.getElementById("life");
+        ctx.drawImage(
+            img,
+            lifes.position.x * CELL_SIZE,
+            lifes.position.y * CELL_SIZE,
+            CELL_SIZE,
+            CELL_SIZE
+        );
+}
+
 function draw() {
     setInterval(function() {
         let snakeCanvas = document.getElementById("snakeBoard");
@@ -89,6 +129,14 @@ function draw() {
             let apple = apples[i];
             var apple_img = document.getElementById("apple");
             ctx.drawImage(apple_img, apple.position.x * CELL_SIZE, apple.position.y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+        }
+
+        //drawLife Corner
+        drawLifeCorner(ctx, snake1);
+
+        //draw health on prime number
+        if (isPrime(snake1.score)) {
+            drawLife(ctx, lifes);
         }
 
         drawScore(snake1);
@@ -119,30 +167,38 @@ function eat(snake, apples) {
             snake.body.push({x: snake.head.x, y: snake.head.y});
         }
     }
+
+    if (snake.head.x == lifes.position.x && snake.head.y == lifes.position.y && isPrime(snake.score)) {
+        lifes.position = initPosition();
+        snake.life++;
+        snake.score++; // biar scorenya nambah sehingga tidak selalu primer
+        // var msk = document.getElementById("getHealth");
+        // msk.play();
+    }
 }
 
 function moveLeft(snake) {
     snake.head.x--;
     teleport(snake);
-    eat(snake, apples);
+    eat(snake, apples, lifes);
 }
 
 function moveRight(snake) {
     snake.head.x++;
     teleport(snake);
-    eat(snake, apples);
+    eat(snake, apples, lifes);
 }
 
 function moveDown(snake) {
     snake.head.y++;
     teleport(snake);
-    eat(snake, apples);
+    eat(snake, apples, lifes);
 }
 
 function moveUp(snake) {
     snake.head.y--;
     teleport(snake);
-    eat(snake, apples);
+    eat(snake, apples, lifes);
 }
 
 function checkCollision(snakes) {
@@ -152,7 +208,10 @@ function checkCollision(snakes) {
         for (let j = 0; j < snakes.length; j++) {
             for (let k = 1; k < snakes[j].body.length; k++) {
                 if (snakes[i].head.x == snakes[j].body[k].x && snakes[i].head.y == snakes[j].body[k].y) {
-                    isCollide = true;
+                    snake1.life--;
+                    if(snake1.life == 0){
+                        isCollide = true;
+                    }
                 }
             }
         }
