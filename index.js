@@ -39,6 +39,13 @@ function initSnake(color) {
         ...initHeadAndBody(),
         direction: initDirection(),
         score: 0,
+        lifepos: [
+            { x: 1, y: 1 },
+            { x: 2, y: 1 },
+            { x: 3, y: 1 },
+          ],
+          level: 1,
+          speed: 150,
     }
 }
 let snake1 = initSnake("purple");
@@ -51,6 +58,142 @@ let apples = [{
     color: "blue",
     position: initPosition(),
 }]
+
+let obstacles = [
+    { level: 1, walls: [] },
+    {
+      level: 2,
+      walls: [
+        {
+          startX: 13,
+          startY: 20,
+          endX: 26,
+          endY: 20,
+          width: CELL_SIZE,
+          height: CELL_SIZE / 2,
+        },
+      ],
+    },
+    {
+      level: 3,
+      walls: [
+        {
+          startX: 23,
+          startY: 20,
+          endX: 36,
+          endY: 20,
+          width: CELL_SIZE,
+          height: CELL_SIZE / 2,
+        },
+        {
+          startX: 9,
+          startY: 30,
+          endX: 22,
+          endY: 30,
+          width: CELL_SIZE,
+          height: CELL_SIZE / 2,
+        },
+      ],
+    },
+    {
+      level: 4,
+      walls: [
+        {
+          startX: 23,
+          startY: 20,
+          endX: 36,
+          endY: 20,
+          width: CELL_SIZE,
+          height: CELL_SIZE / 2,
+        },
+        {
+          startX: 9,
+          startY: 30,
+          endX: 22,
+          endY: 30,
+          width: CELL_SIZE,
+          height: CELL_SIZE / 2,
+        },
+        {
+          startX: 4,
+          startY: 10,
+          endX: 17,
+          endY: 10,
+          width: CELL_SIZE,
+          height: CELL_SIZE / 2,
+        },
+      ],
+    },
+    {
+      level: 5,
+      walls: [
+        {
+          startX: 25,
+          startY: 13,
+          endX: 36,
+          endY: 13,
+          width: CELL_SIZE,
+          height: CELL_SIZE / 2,
+        },
+        {
+          startX: 7,
+          startY: 22,
+          endX: 19,
+          endY: 22,
+          width: CELL_SIZE,
+          height: CELL_SIZE / 2,
+        },
+        {
+          startX: 32,
+          startY: 22,
+          endX: 36,
+          endY: 22,
+          width: CELL_SIZE,
+          height: CELL_SIZE / 2,
+        },
+        {
+          startX: 13,
+          startY: 30,
+          endX: 26,
+          endY: 30,
+          width: CELL_SIZE,
+          height: CELL_SIZE / 2,
+        },
+        {
+          startX: 0,
+          startY: 0,
+          endX: 39,
+          endY: 0,
+          width: CELL_SIZE,
+          height: CELL_SIZE,
+        },
+        {
+          startX: 0,
+          startY: 39,
+          endX: 39,
+          endY: 39,
+          width: CELL_SIZE,
+          height: CELL_SIZE,
+        },
+        {
+          startX: 0,
+          startY: 0,
+          endX: 0,
+          endY: 39,
+          width: CELL_SIZE,
+          height: CELL_SIZE,
+        },
+        {
+          startX: 39,
+          startY: 0,
+          endX: 39,
+          endY: 39,
+          width: CELL_SIZE,
+          height: CELL_SIZE,
+        },
+      ],
+    },
+  ]  
 
 function drawCell(ctx, x, y, head) {
     var head = document.getElementById("snake_head"); 
