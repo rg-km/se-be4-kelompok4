@@ -5,12 +5,26 @@
     <body onload="draw();">
         <h1>Snake Game</h1>
         <!-- add image apple -->
+        <img id="apple" style="display: none;" width="20" height="20" src="assets/icons/apple.png" alt="Apple">
+        <!-- add snake head -->
+        <img id="upmouth" style="display: none;" width="20" height="20" src="assets/icons/upmouth.png" alt="SnakeHead">
+        <img id="downmouth" style="display: none;" width="20" height="20" src="assets/icons/downmouth.png" alt="SnakeHead">
+        <img id="leftmouth" style="display: none;" width="20" height="20" src="assets/icons/leftmouth.png" alt="SnakeHead">
+        <img id="rightmouth" style="display: none;" width="20" height="20" src="assets/icons/rightmouth.png" alt="SnakeHead">
+        <!-- add snake body-->
+        <img id="snake_body" style="display: none;" width="20" height="20" src="assets/icons/snake_body.png" alt="SnakeHead">
+        <!-- add life-->
+        <img id="life" style="display: none;" width="20" height="20" src="assets/icons/life.png" alt="SnakeHead">
+        <!-- board -->
+
         <img id="apple" style="display: none;" width="20" height="20" src="assets/apple.png" alt="Apple">
         <img id="snake_head" style="display: none;" width="20" height="20" src="assets/snake-head.jpg" alt="SnakeHead">
         <img id="snake_body" style="display: none;" width="20" height="20" src="assets/snake-body.png" alt="SnakeBody">
         <!-- life -->
         <img id="life" style="display: none;" width="20" height="20" src="assets/life.png" alt="Life">
         <canvas id="snakeBoard" width="400" height="400" style="border:1px solid #000000;"></canvas>
-        <canvas id="score1Board" width="100" height="100" style="border:1px solid #000000;"></canvas>
+        <canvas id="score1Board" width="100" height="80" style="border:1px solid #000000;"></canvas>
+        <canvas id="rank-board" width="100" height="80" style="border:1px solid #000000;"></canvas>
+        <canvas id="speed-board" width="100"height="80" style="border:1px solid #000000;"></canvas>
     </body>
 </html>
